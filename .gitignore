@@ -1,0 +1,21 @@
+# Compiled python modules.
+*.pyc
+__pycache__
+
+# ipython notebook checkpoints
+.ipynb_checkpoints
+
+# Mac files
+*.DS_Store
+
+# Terraform files
+.terraform
+*.tfstate
+*.tfstate.backup
+*.terraform
+*.info
+
+# Misc
+/resources/outputs/*
+*.tar
+*.gz
