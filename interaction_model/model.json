@@ -1,45 +1,73 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "space facts",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
-        },
-        {
-          "name": "GetNewFactIntent",
-          "samples": [
-            "a fact",
-            "a space fact",
-            "tell me a fact",
-            "tell me a space fact",
-            "give me a fact",
-            "give me a space fact",
-            "tell me trivia",
-            "tell me a space trivia",
-            "give me trivia",
-            "give me a space trivia",
-            "give me some information",
-            "give me some space information",
-            "tell me something",
-            "give me something"
-          ],
-          "slots": []
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "spell book",
+            "intents": [
+                {
+                    "name": "Help",
+                    "slots": [],
+                    "samples": [
+                        "for help"
+                    ]
+                },
+                {
+                    "name": "Inside_Jokes",
+                    "slots": [],
+                    "samples": [
+                        "Who is your favorite dungeon master"
+                    ]
+                },
+                {
+                    "name": "Spells",
+                    "slots": [
+                        {
+                            "name": "spell",
+                            "type": "spell_name"
+                        }
+                    ],
+                    "samples": [
+                        "to open page to {spell}"
+                    ]
+                },
+                {
+                    "name": "Dice",
+                    "slots": [
+                        {
+                            "name": "number",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "value",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "to roll {number} D {value}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "spell_name",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Acid Splash"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Random Spell"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Other Spell"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }

@@ -11,12 +11,19 @@ This app supports a few fun utilities to help any (5th Edition) D&D session go a
 
 Before launching the web application, make sure that you have all dependancies installed and properly set up. A complete guide to dependency set up is provided in the [prerequisites file](./prerequisites.md).
 
-## B)
+## B) Set Up Skill in the Alexa Developer Console
 
-* Set Up Skill in Alexa Hub
-* Set Up Code for Skill
-* Deploy Lambda using Terraform
-* Populate DynamoDB Table
+The first thing we need to do is set up the Alexa skill in the Alexa Developer Console. We will set up the basic framework for the skill. Follow this [guide](./guides/Master_Guide.md) to get started setting up your skill.
+
+## C) Set Up Python Code for Skill
+
+## D) Deploy Cloud Resources Using Terraform
+
+### Lambda
+
+### DynamoDB Table
+
+## E) Populate DynamoDB Table
 
 ## Acknowledgements
 
