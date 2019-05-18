@@ -46,7 +46,7 @@ cd ..
 
 When the lambda deploys it will print an arn onto the console. Keep track of this arn as we will need it in a future step!
 
-### E) Populate DynamoDB Table
+## E) Populate DynamoDB Table
 
 Our alexa skill uses a dynamodb table to store all of it's spells. The terraform script created a table for us to use, but it didn't populate the table for us! To populate the table follow the ipython notebook `Populate_Table.ipynb` in the `data` directory.
 
