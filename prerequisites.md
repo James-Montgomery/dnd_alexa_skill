@@ -15,7 +15,7 @@ Follow the instructions here: [Install Python](https://docs.anaconda.com/anacond
 
 ### 2) Terraform
 
-We will use terraform to deploy the actual infrastructure in aws. I recommend brew installing.
+We will use terraform to deploy the actual infrastructure in aws. I recommend [brew](https://brew.sh/) installing.
 
 ~~~Bash
 brew install terraform
@@ -43,7 +43,7 @@ echo $AWS_ACCESS_KEY_ID
 echo $AWS_SECRET_ACCESS_KEY
 ~~~
 
-Your credentials should print out in the terminal. Storing important credentials in plain text is not always the best idea. I would use credentials for a user with limited powers. You can create such users using aws IAM. You could also store such credentials in a Vault or protected server.
+Your credentials should print out in the terminal. Storing important credentials in plain text is not always the best idea. I would use credentials for a user with limited powers. You can create such users using aws IAM. You could also store such credentials in a Vault or protected server for increased security.
 
 ### 3) AWS CLI Tool
 
@@ -52,7 +52,7 @@ It can also be useful to have the aws cli tool on hand. I wish all of the cloud 
 The aws cli tool is also useful for programmatically grabbing the s3 prefixes of all of the aws regions which may me necessary if you plan to run this script in a region other than `us-east-1`.
 
 ~~~Bash
-awscli==1.16.112
+pip install awscli==1.16.112
 ~~~
 
 We can set a default profile using the code below. We already set the key and secret in the terraform step. You can also set a default region here.

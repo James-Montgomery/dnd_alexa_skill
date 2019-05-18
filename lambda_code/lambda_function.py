@@ -1,103 +1,95 @@
 import boto3
+import logging
 
 def build_response(message, session_attributes={}):
     response = {}
-    response['version'] = '1.0'
-    response['sessionAttributes'] = session_attributes
-    response['response'] = message
+    response["version"] = "1.0"
+    response["sessionAttributes"] = session_attributes
+    response["response"] = message
     return response
 
 def build_SimpleCard(title, body):
     card = {}
-    card['type'] = 'Simple'
-    card['title'] = title
-    card['content'] = body
+    card["type"] = "Simple"
+    card["title"] = title
+    card["content"] = body
     return card
 
 def build_PlainSpeech(body):
     speech = {}
-    speech['type'] = 'PlainText'
-    speech['text'] = body
+    speech["type"] = "PlainText"
+    speech["text"] = body
     return speech
 
 def statement(title, body):
     speechlet = {}
-    speechlet['outputSpeech'] = build_PlainSpeech(body)
-    speechlet['card'] = build_SimpleCard(title, body)
-    speechlet['shouldEndSession'] = True
+    speechlet["outputSpeech"] = build_PlainSpeech(body)
+    speechlet["card"] = build_SimpleCard(title, body)
+    speechlet["shouldEndSession"] = True
     return build_response(speechlet)
 
+def retrieve_spell(spell):
+    # open connection to table
+    dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
+    table = dynamodb.Table("Spell_Book")
+    # query table for spell
+    query_response = table.get_item(Key={"spell_name": spell})["Item"]
+    # parse response
+    spell_name = query_response["spell_name"]
+    description = query_response["description"]
+    casting_time = query_response["casting_time"]
+    range_ = query_response["range"]
+    components = query_response["components"]
+    # create response
+    response = """
+    {} \n{} \nCasting Time {} \nRange {} \nComponents {}
+    """.format(spell_name, description, casting_time, range_, components)
+    return response
+
 def lambda_handler(event, context):
+
+    logging.info("Call Made.")
+    logging.debug("Event: {}".format(event))
+    logging.debug("Context: {}".format(context))
+
     try:
-        try:
-            intent = event['request']['intent']['name']
-        except:
-            return 'Successful Test'
+        intent = event["request"]["intent"]["name"]
+    except Exception as e:
+        logging.error("Error Getting Intent:\n{}".format(e))
+        title = "intent_not_found"
+        response = "Encountered an error!"
+        logging.info("Returning Response.")
+        return statement(title, response)
 
-        if intent == 'Help':
+    try:
+        if intent == "Help":
+            logging.info("Help Intent")
+            title = "help_response"
+            response = "Get Help."
 
-            help_statement = '''
-            Having trouble with Spell Book? Never fear! Spell Book
-            is an alexa skill designed to assist dungeon masters to
-            quickly reference the 5th edition Dungeons and Dragons
-            player's hand book.
+        elif intent == "Inside_Jokes":
+            logging.info("Inside Joke Intent")
+            title = "inside_joke_response"
+            response = """
+            I don't really have one favorite, but Jay Rye and Kate are definitely at the top of my list!
+            """
 
-            Try asking roll one d Six.
+        elif intent == "Spells":
+            logging.info("Spells Intent")
+            spell =  event["request"]["intent"]["slots"]["spell"]["value"]
+            logging.info("".format(spell))
+            title = "spell_response"
+            response = retrieve_spell(spell)
 
-            or
+        else:
+            logging.error("Unexpected Intent: {}".format(intent))
+            title = "unexpected_intent_response"
+            response = "Encountered an Error!"
 
-            Open spell book to acid splash.
+    except Exception as e:
+            logging.error("Unexpected Error:\n{}".format(e))
+            title = "error_response"
+            response = "Encountered an error!"
 
-            '''
-
-            return statement("greeting", help_statement)
-
-        elif intent == 'Inside_Jokes':
-            response = '''
-            I don't really have one favorite, but Jay ryr and Kate are definitely at the top of my list!
-            '''
-            return statement("spell", response)
-
-        elif intent == 'Spells':
-            spell =  event['request']['intent']['slots']['spell']['value']
-
-            dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-            table = dynamodb.Table('Spell_Book')
-            #response = table.scan()
-
-            response = table.get_item(
-                Key={
-                    'spell_name': spell
-                })
-
-            spell_name = response['Item']['spell_name']
-            description = response['Item']['description']
-            casting_time = response['Item']['casting_time']
-            range_ = response['Item']['range']
-            components = response['Item']['components']
-
-            response = '''
-            {}
-            {}
-            Casting Time {}
-            Range {}
-            Components {}
-            '''.format(spell_name, description, casting_time, range_, components)
-
-            return statement("spell", response)
-
-        elif intent == 'Dice':
-            #results = []
-            n = event['request']['intent']['slots']['number']['value']
-            v = event['request']['intent']['slots']['value']['value']
-            exp = int(round( int(n) * int(v) * .5 + .5, 0 ))
-            #for i in range(n):
-            #    a = [i+1 for i in range(v)]
-            #    x = np.random.choice(a,1)
-            #    results.append(results)
-            #output = "{}".format(results[0])
-            output = "You rolled a cumulative {}".format(exp) #"Numpy not Found"
-            return statement("error", output)
-
-    except:
-        return statement("error", 'Encountered an error!')
+    logging.info("Returning Response.")
+    return statement(title, response)

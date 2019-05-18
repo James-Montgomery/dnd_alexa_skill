@@ -1,14 +1,20 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "spell book",
+            "invocationName": "necronomicon",
             "intents": [
                 {
                     "name": "Help",
                     "slots": [],
                     "samples": [
-                        "for help"
+                        "for help",
+                        "to help",
+                        "help"
                     ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
                 },
                 {
                     "name": "Inside_Jokes",
@@ -27,22 +33,6 @@
                     ],
                     "samples": [
                         "to open page to {spell}"
-                    ]
-                },
-                {
-                    "name": "Dice",
-                    "slots": [
-                        {
-                            "name": "number",
-                            "type": "AMAZON.NUMBER"
-                        },
-                        {
-                            "name": "value",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "to roll {number} D {value}"
                     ]
                 }
             ],

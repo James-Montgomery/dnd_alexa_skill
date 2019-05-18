@@ -16,7 +16,7 @@
 1. Choose **Start from scratch** from the *Choose a template* section and click the **Choose** button on the top right.
 
 1. **Build the Interaction Model for your skill**
-	1. On the left hand navigation panel, select the **JSON Editor** tab under **Interaction Model**. In the textfield provided, replace any existing code with the code provided in the [Interaction Model](../models/en-US.json).  Click **Save Model**.
+	1. On the left hand navigation panel, select the **JSON Editor** tab under **Interaction Model**. In the textfield provided, replace any existing code with the code provided in the [Interaction Model](../interaction_model/model.json).  Click **Save Model**.
     2. If you want to change the skill invocation name, select the **Invocation** tab. Enter a **Skill Invocation Name**. This is the name that your users will need to say to start your skill.  In this case, it's preconfigured to be 'space facts'.
     3. Click "Build Model".
 
@@ -30,3 +30,5 @@
 
      *  **Did you copy & paste the provided code correctly?**
      *  **Did you accidentally add any characters to the Interaction Model?**
+
+[Return to README](../Readme.md)

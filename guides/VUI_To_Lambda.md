@@ -11,5 +11,3 @@ On [page #1](./1-voice-user-interface.md) of this guide, we created a voice user
 4.  Paste your Lambda's ARN (Amazon Resource Name) into the textbox provided for **Default Region**.
 
 5. Click the **Save Endpoints** button at the top of the main panel.
-
-6. **Click the "Next" button to continue to page #4 of this guide.**
