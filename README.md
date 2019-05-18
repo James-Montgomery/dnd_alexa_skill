@@ -12,7 +12,7 @@ If you do set up a skill, remember that you can get [paid based on its popularit
 
 Before launching the alexa skill, make sure that you have all dependancies installed and properly set up. A complete guide to dependency set up is provided in the [prerequisites file](./prerequisites.md). You will also need an aws (amazon web services) account!
 
-## B) Set Up Skill in the Alexa Developer Console
+## B) Create Interaction Model in the Alexa Developer Console
 
 The first thing we need to do is set up the Alexa skill in the Alexa Developer Console. This will set the scaffold for how users will interact with our skill. Follow this [guide](./guides/Voice_User_Interface.md). During set up you will be asked to set up an "invocation" name. I recommend using something fun like "spell book" or "grimoire". When you are done setting up the interaction model, return to this page.
 
