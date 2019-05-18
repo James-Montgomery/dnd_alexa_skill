@@ -56,6 +56,18 @@ Finally, you will need to link the front and back ends of the alexa skill. Follo
 
 Your Alexa *should* be working now! You can follow these [instructions](./guides/Testing.md) to test your skill's functionality. If you see weird errors (i.e. your invocation calling other skills) to rebuilding your skill. This is a well known [issue](https://forums.developer.amazon.com/questions/180497/alexa-skills-test-mode-not-recognition-invocation.html).
 
+When you test, try some of the utterances/intents below. Replace `grimoire` with your invocation phrase.
+
+~~~
+ask grimoire to help
+ask grimoire for help
+
+ask grimoire who is your favorite dungeon master
+
+ask grimoire to open to acid splash
+ask grimoire to open page to acid splash
+~~~
+
 ## Acknowledgements
 
 A big thank you to [open5e](https://github.com/eepMoody/open5e). Getting much of this data would have been extremely tedious if not for the efforts of eepMoody in creating open5e. Another big thank you to the publishers of D&D: [Wizards of the Coast](http://company.wizards.com/).
