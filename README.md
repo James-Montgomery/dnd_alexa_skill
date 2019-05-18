@@ -60,7 +60,7 @@ Your Alexa *should* be working now! You can follow these [instructions](./guides
 
 A big thank you to [open5e](https://github.com/eepMoody/open5e). Getting much of this data would have been extremely tedious if not for the efforts of eepMoody in creating open5e. Another big thank you to the publishers of D&D: [Wizards of the Coast](http://company.wizards.com/).
 
-A personal thank you to Jon Rider and Kate Highnam who introduced me to D&D!
+A personal thank you to [Jon Rider](https://github.com/JonRider) and Kate Highnam who introduced me to D&D!
 
 ## LICENSE
 
