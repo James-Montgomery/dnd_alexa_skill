@@ -31,4 +31,4 @@
      *  **Did you copy & paste the provided code correctly?**
      *  **Did you accidentally add any characters to the Interaction Model?**
 
-[Return to README](../Readme.md)
+[Return to README](../README.md)
