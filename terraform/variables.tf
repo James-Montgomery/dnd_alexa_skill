@@ -1,3 +1,3 @@
 variable "skill_name" {
-  default = "necronomicon"
+  default = "spell_book"
 }
